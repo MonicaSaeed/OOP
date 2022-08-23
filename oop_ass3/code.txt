@@ -1,0 +1,528 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class FloatArray
+{
+private:
+    float *arr;
+    int size;
+    int cnt;
+public:
+    FloatArray(int _size);
+    friend ofstream& operator<<(ofstream& os, const FloatArray& F);
+    friend ifstream& operator>>(ifstream& is, const FloatArray& F);
+    virtual void add(float number);
+    float getElement(int index);
+    void setElement(int index,float number);
+    virtual ~FloatArray();
+};
+
+FloatArray::FloatArray(int _size)
+{
+    size=_size;
+    arr=new float[size];
+    cnt=0;
+}
+void FloatArray::add(float number)
+{
+    arr[cnt]=number;
+    cnt++;
+}
+float FloatArray::getElement(int index)
+{
+    return arr[index];
+}
+void FloatArray::setElement(int index,float number)
+{
+    arr[index]=number;
+}
+FloatArray::~FloatArray()
+{
+    delete [] arr;
+}
+ofstream& operator<<(ofstream& out, const FloatArray& F)
+{
+    while(out)
+    {
+        out<<F.size<<"|"<<"   ";
+        for(int i=0; i<F.size; i++)
+        {
+            out<<F.arr[i]<<" ";
+        }
+        out<<endl;
+    }
+    return out;
+}
+ifstream& operator>>(ifstream& in, const FloatArray& F)
+{
+    while(in)
+    {
+        in>>F.size;
+        for(int i=0; i<F.size; i++)
+        {
+            in>>F.arr[i];
+        }
+    }
+    return in;
+}
+
+class SortedArray:public FloatArray
+{
+private:
+    int size2;
+    int counter;
+public:
+    SortedArray(int _size2):FloatArray(_size2)
+    {
+        size2=_size2;
+        counter=0;
+    }
+    virtual void add(float number);
+};
+
+void SortedArray::add(float number)
+{
+    counter++;
+    FloatArray::add(number);
+    for(int i=0; i<counter; i++)
+    {
+
+        for(int j=0; j<i; j++)
+        {
+            if(getElement(i)<getElement(j))
+            {
+                float temp=getElement(i);
+                setElement(i,getElement(j)); //arr[i]=arr[j]
+                setElement(j,temp); //arr[j]=temp
+            }
+        }
+    }
+}
+
+class FrontArray:public FloatArray
+{
+private:
+    int size3;
+    int counter1;
+public:
+    FrontArray(int _size3):FloatArray(_size3)
+    {
+        size3=_size3;
+        counter1=0;
+    }
+    void add(float number);
+};
+void FrontArray::add(float number)
+{
+    counter1++;
+    for(int i=0; i<counter1; i++)
+    {
+        FloatArray::add(number);
+        //setElement(i,number);
+        for(int j=0; j<i; j++)
+        {
+            float temp=getElement(i);
+            setElement(i,getElement(j)); //arr[i]=arr[j]
+            setElement(j,temp); //arr[j]=temp
+        }
+    }
+}
+class PositiveArray:public SortedArray
+{
+private:
+    int size4;
+    int cnt2;
+    int counter3;
+public:
+    PositiveArray(int _size4):SortedArray(_size4)
+    {
+        size4=_size4;
+        cnt2=0;
+        counter3=0;
+    }
+    void add(float number);
+};
+void PositiveArray::add(float number)
+{
+    counter3++;
+    for(int i=0; i<counter3; i++)
+    {
+        if(number>=0)
+        {
+            SortedArray::add(number);
+            cnt2++;
+        }
+        else if(number<0)
+        {
+            break;
+        }
+    }
+    size4=cnt2;
+}
+
+class NegativeArray:public SortedArray
+{
+private:
+    int size5;
+    int cnt3;
+public:
+    NegativeArray(int _size5):SortedArray(_size5)
+    {
+        size5=_size5;
+    }
+    void add(float number);
+
+};
+void NegativeArray::add(float number)
+{
+    for(int i=0; i<size5; i++)
+    {
+        if(number<0)
+        {
+            SortedArray::add(number);
+            cnt3++;
+        }
+    }
+    size5=cnt3;
+}
+
+
+int main()
+{
+    float element1;
+    string type;
+    int SIZE;
+    ofstream out("out.txt");
+
+
+    ifstream file("in.txt");
+    file>>type;
+    file>>SIZE;
+
+
+    FloatArray obj1(SIZE);
+
+
+    for(int i=0; i<SIZE; i++)
+    {
+        file>>element1;
+        obj1.add(element1);
+
+    }
+    out<<obj1;
+    /* for(int i=0;i<SIZE;i++)
+     {
+         cout<<obj1.getElement(i)<<endl;
+     }*/
+
+    return 0;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class FloatArray
+{
+private:
+    float *arr;
+    int sz;
+    int counter;
+public:
+    FloatArray(int sz){
+        this ->sz=sz;
+        arr=new float[sz];
+        counter=0;
+    }
+    friend ostream& operator<<(ostream& os, const FloatArray& F);
+    friend istream& operator>>(istream& is, const FloatArray& F);
+    virtual void add(float elem){
+        arr[counter]=elem;
+        counter++;
+    }
+    float getArrE(int index){
+        return arr[index];
+    }
+    void setArrE(int index,float x){
+        arr[index]=x;
+    }
+    virtual ~FloatArray(){
+        delete [] arr;
+    }
+};
+class SortedArray:public FloatArray
+{
+private:
+    int sz2;
+public:
+    SortedArray(int sz2):FloatArray(sz2){
+        this->sz2=sz2;
+    }
+     virtual void add(float elem){
+        for(int i=0; i<sz2;i++){
+            FloatArray::add(elem);
+            for(int j=0;j<i;j++){
+                if(getArrE(i)<getArrE(j)){
+                    float temp=getArrE(i);
+                    setArrE(i,getArrE(j)); //arr[i]=arr[j]
+                    setArrE(j,temp); //arr[j]=temp
+                }
+            }
+        }
+    }
+};
+class FrontArray:public FloatArray
+{
+private:
+    int sz3;
+public:
+    FrontArray(int sz3):FloatArray(sz3){
+        this->sz3=sz3;
+    }
+    void add(float elem){
+        for(int i=sz3-1; i>=0;i++){
+            FloatArray::add(elem);
+            setArrE(i,elem);
+        }
+    }
+};
+class PositiveArray:public SortedArray
+{
+private:
+    int sz4;
+    int counter2;
+public:
+    PositiveArray(int sz4):SortedArray(sz4){
+        this->sz4=sz4;
+    }
+    void add(float elem){
+        for(int i=0; i<sz4; i++){
+            if(elem>=0){
+                SortedArray::add(elem);
+                counter2++;
+            }
+        }
+        sz4=counter2;
+    }
+};
+class NegativeArray:public SortedArray
+{
+private:
+    int sz5;
+    int counter3;
+public:
+    NegativeArray(int sz5):SortedArray(sz5){
+    this->sz5=sz5;
+    }
+    void add(float elem){
+        for(int i=0; i<sz5; i++){
+            if(elem<0){
+                SortedArray::add(elem);
+                counter3++;
+            }
+        }
+        sz5=counter3;
+    }
+};
+ostream& operator<<(ostream& out, const FloatArray& F)
+{
+    while(out){
+        out<<F.sz<<"|"<<"   ";
+        for(int i=0;i<F.sz;i++){
+            out<<F.arr[i]<<" ";
+        }
+        out<<endl;
+    }
+    return out;
+}
+istream& operator>>(istream& in, const FloatArray& F)
+{
+    while(in){
+        in>>F.sz;
+        for(int i=0;i<F.sz;i++){
+            in>>F.arr[i];
+        }
+    }
+    return in;
+}
+//enum types{Sorted, Array,Front,Positive, Negative};
+
+int main()
+{
+    ifstream file("in.txt");
+    string type;
+    int SIZE;
+    file>>type;
+    file>>SIZE;
+    ofstream fileOut("OooooUT.txt");
+    FloatArray* theArray[10];
+    FloatArray* ptr;
+
+    if(type=="Sorted")
+    {
+        ptr=new SortedArray(SIZE);
+        SortedArray obj(SIZE);
+        for(int i=0;i<SIZE ;i++){
+          float element;
+          file>>element;
+          obj.add(element);
+        }
+        fileOut<<obj;
+    }
+    return 0;
+}
+/////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class FloatArray
+{
+private:
+    float *arr;
+    int sz;
+    int counter;
+public:
+    FloatArray(int sz){
+        this ->sz=sz;
+        arr=new float[sz];
+        counter=0;
+    }
+    friend ostream& operator<<(ostream& os, const FloatArray& F);
+    friend istream& operator>>(istream& is, const FloatArray& F);
+    virtual void add(float elem){
+        arr[counter]=elem;
+        counter++;
+    }
+    float getArrE(int index){
+        return arr[index];
+    }
+    void setArrE(int index,float x){
+        arr[index]=x;
+    }
+    virtual ~FloatArray(){
+        delete [] arr;
+    }
+};
+class SortedArray:public FloatArray
+{
+private:
+    int sz2;
+public:
+    SortedArray(int sz2):FloatArray(sz2){
+        this->sz2=sz2;
+    }
+     virtual void add(float elem){
+        for(int i=0; i<sz2;i++){
+            FloatArray::add(elem);
+            for(int j=0;j<i;j++){
+                if(getArrE(i)<getArrE(j)){
+                    float temp=getArrE(i);
+                    setArrE(i,getArrE(j)); //arr[i]=arr[j]
+                    setArrE(j,temp); //arr[j]=temp
+                }
+            }
+        }
+    }
+};
+class FrontArray:public FloatArray
+{
+private:
+    int sz3;
+public:
+    FrontArray(int sz3):FloatArray(sz3){
+        this->sz3=sz3;
+    }
+    void add(float elem){
+        for(int i=sz3-1; i>=0;i++){
+            FloatArray::add(elem);
+            setArrE(i,elem);
+        }
+    }
+};
+class PositiveArray:public SortedArray
+{
+private:
+    int sz4;
+    int counter2;
+public:
+    PositiveArray(int sz4):SortedArray(sz4){
+        this->sz4=sz4;
+    }
+    void add(float elem){
+        for(int i=0; i<sz4; i++){
+            if(elem>=0){
+                SortedArray::add(elem);
+                counter2++;
+            }
+        }
+        sz4=counter2;
+    }
+};
+class NegativeArray:public SortedArray
+{
+private:
+    int sz5;
+    int counter3;
+public:
+    NegativeArray(int sz5):SortedArray(sz5){
+    this->sz5=sz5;
+    }
+    void add(float elem){
+        for(int i=0; i<sz5; i++){
+            if(elem<0){
+                SortedArray::add(elem);
+                counter3++;
+            }
+        }
+        sz5=counter3;
+    }
+};
+ostream& operator<<(ostream& out, const FloatArray& F)
+{
+    while(out){
+        out<<F.sz<<"|"<<"   ";
+        for(int i=0;i<F.sz;i++){
+            out<<F.arr[i]<<" ";
+        }
+        out<<endl;
+    }
+    return out;
+}
+istream& operator>>(istream& in, const FloatArray& F)
+{
+    while(in){
+        in>>F.sz;
+        for(int i=0;i<F.sz;i++){
+            in>>F.arr[i];
+        }
+    }
+    return in;
+}
+//enum types{Sorted, Array,Front,Positive, Negative};
+
+int main()
+{
+    ifstream file("in.txt");
+    string type;
+    int SIZE;
+    file>>type;
+    file>>SIZE;
+    ofstream fileOut("OooooUT.txt");
+    FloatArray* theArray[10];
+    FloatArray* ptr;
+
+    if(type=="Array")
+    {
+        ptr=new FloatArray(SIZE);
+        FloatArray obj(SIZE);
+        for(int i=0;i<SIZE ;i++){
+          float element;
+          file>>element;
+          obj.add(element);
+        }
+        fileOut<<obj;
+    }
+    return 0;
+}

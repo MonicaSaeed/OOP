@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1639738359 source:f:\fcai\level two\1\oop\ass\oop_ass2\main.cpp
+	<iostream>
+
+1638622938 source:f:\fcai\level two\1\oop\ass\oop_ass2\item.cpp
+	"item.h"
+
+1638624031 f:\fcai\level two\1\oop\ass\oop_ass2\item.h
+	<iostream>
+
+1638520614 f:\fcai\level two\1\oop\ass\oop_ass2\seller.h
+	<iostream>
+	"item.h"
+
+1638520614 source:f:\fcai\level two\1\oop\ass\oop_ass2\seller.cpp
+	"seller.h"
+
