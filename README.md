@@ -59,3 +59,31 @@ we can also print the seller's info and the products he have in store<br>
 ![image](https://user-images.githubusercontent.com/101058082/186726421-6f4b3310-a6ef-400b-9e27-e6101875c2f7.PNG)<br><br>
 
 
+## Assignment 3 (Array)
+Declare and implement 5 classes: FloatArray, SortedArray, 
+FrontArray, PositiveArray & NegativeArray. <br>
+1- The FloatArray class stores a dynamic array of floats and its size. It has:<br>
+- A parameterized constructor that takes the array size. 
+- An add method that adds a float at the end of the array.
+- Overloading for the insertion operator << to write the array to a file (ofstream)
+- Overloading for the extraction operator >> to read the array elements from the file (ifstream) and add them to the array.
+- A destructor to deallocate the array<br>
+2- The SortedArray inherits from FloatArray. It has:<br>
+- A parameterized constructor that takes the array size. 
+- An add method that adds a float at the right place in the array
+such that the array remains sorted with every add. Don’t add to 
+the array then sort but rather add in the right place.<br>
+3- The FrontArray inherits from FloatArray. It has:<br>
+- A parameterized constructor that takes the array size. 
+- An add method that adds a float at the front of the array.<br>
+4- The PositiveArray that inherits from SortedArray. It has:<br>
+- A parameterized constructor that takes the array size. 
+- An add method that adds a float to the array only if it’s a 
+positive number. It then uses the add method of SortedArray.<br>
+5- The NegativeArray that inherits from SortedArray. It has:<br>
+- A parameterized constructor that takes the array size. 
+- An add method that adds a float to the array only if it’s a 
+negative number. It then uses the add method of SortedArray.<br>
+### Test case:
+![image](https://user-images.githubusercontent.com/101058082/186738111-c37f20a7-ce95-4662-85f4-b24e729a0718.PNG)
+![sample2](https://user-images.githubusercontent.com/101058082/186738241-bffa596a-7302-4bd1-a147-f791695fa7ff.PNG)
