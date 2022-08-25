@@ -56,7 +56,7 @@ if we want to access a certain item and know if it's available or not we enter i
 and all details will appear such as quantity, name, id and price
 we can also print the seller's info and the products he have in store<br>
 ### Test case:
-![image](https://user-images.githubusercontent.com/101058082/186726272-f999be2d-c581-4bd4-83cb-7b0f7d4b9b0d.PNG) &nbsp;
+![image](https://user-images.githubusercontent.com/101058082/186744190-186d0d38-4384-40e0-853d-01c8dd964e5f.PNG) &nbsp;
 
 ![image](https://user-images.githubusercontent.com/101058082/186726421-6f4b3310-a6ef-400b-9e27-e6101875c2f7.PNG)
 <br><br>
@@ -90,4 +90,4 @@ negative number. It then uses the add method of SortedArray.<br>
 ### Test case:
 ![image](https://user-images.githubusercontent.com/101058082/186738111-c37f20a7-ce95-4662-85f4-b24e729a0718.PNG) &nbsp;
 
-![sample2](https://user-images.githubusercontent.com/101058082/186738241-bffa596a-7302-4bd1-a147-f791695fa7ff.PNG)
+![image](https://user-images.githubusercontent.com/101058082/186738241-bffa596a-7302-4bd1-a147-f791695fa7ff.PNG)
