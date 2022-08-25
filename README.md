@@ -36,7 +36,8 @@ box (if for ex. Length = 10 and width = 3, then area = 30).<br>
 value of the static member variable.<br>
 9-A destructor that frees dynamic memory.<br>
 ### Test case:
-![image](https://user-images.githubusercontent.com/101058082/186720835-ec967941-0fdf-455d-83b3-b175740c61d6.PNG)
+![image](https://user-images.githubusercontent.com/101058082/186720835-ec967941-0fdf-455d-83b3-b175740c61d6.PNG) &nbsp;
+
 ![image](https://user-images.githubusercontent.com/101058082/186721001-07c2699d-140c-4a4f-a9bf-492fe5a1e68d.PNG)
 <br><br>
 
@@ -55,8 +56,10 @@ if we want to access a certain item and know if it's available or not we enter i
 and all details will appear such as quantity, name, id and price
 we can also print the seller's info and the products he have in store<br>
 ### Test case:
-![image](https://user-images.githubusercontent.com/101058082/186726272-f999be2d-c581-4bd4-83cb-7b0f7d4b9b0d.PNG)
-![image](https://user-images.githubusercontent.com/101058082/186726421-6f4b3310-a6ef-400b-9e27-e6101875c2f7.PNG)<br><br>
+![image](https://user-images.githubusercontent.com/101058082/186726272-f999be2d-c581-4bd4-83cb-7b0f7d4b9b0d.PNG) &nbsp;
+
+![image](https://user-images.githubusercontent.com/101058082/186726421-6f4b3310-a6ef-400b-9e27-e6101875c2f7.PNG)
+<br><br>
 
 
 ## Assignment 3 (Array)
@@ -85,5 +88,6 @@ positive number. It then uses the add method of SortedArray.<br>
 - An add method that adds a float to the array only if it’s a 
 negative number. It then uses the add method of SortedArray.<br>
 ### Test case:
-![image](https://user-images.githubusercontent.com/101058082/186738111-c37f20a7-ce95-4662-85f4-b24e729a0718.PNG)
+![image](https://user-images.githubusercontent.com/101058082/186738111-c37f20a7-ce95-4662-85f4-b24e729a0718.PNG) &nbsp;
+
 ![sample2](https://user-images.githubusercontent.com/101058082/186738241-bffa596a-7302-4bd1-a147-f791695fa7ff.PNG)
