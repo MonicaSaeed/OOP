@@ -4,22 +4,6 @@ Name:Monica Saeed Habib
 ID:20200567
 Mirette Shenouda Maher
 ID:20200575
-
-*/
-/**
-Online shopping system
-in this program we are trying to facilitate online shopping so we have infromation about the seller such as
-his name, email and the maximum number of items he can stor
- we can create more than one seller and store (name ,email & items of seller with max capacity ) &
-what he have items (id ,name ,price,quantity) can create more than item
-and then we allow the user to enter some details about any product he wants to buy or sell
-such as name, price, quantity if this product is already found within the seller so we increment it's quantity
-if not and there is a space for it we add it with a new id
-if we want to sell an item we just enter it's name and the quantity we want and if it's not available we will have a message
-with the amount left from this item
-if we want to access a certain item and know if it's available or not we enter it's id
-and all details will appear such as quantity, name, id and price
-we can also print the seller's info and the products he have in store
 */
 #include <iostream>
 using namespace std;
@@ -125,7 +109,7 @@ quantity by the quantity of the parameter item*/
 }
 void Item::operator-=(const double num)
  /*-= operator used when the user asks for a certain amount of an item
-If the quantity he wants is <= item’s quantity you will decrease it from item*/
+If the quantity he wants is <= itemï¿½s quantity you will decrease it from item*/
 {
     quantity-=num;
 }
@@ -191,7 +175,7 @@ bool Seller::AddItem(Item& obj)
     return check;
 }
 /*SellItem will take an item name and a quantity as parameters
-- If the quantity is <= item’s quantity you will decrease it from item Using
+- If the quantity is <= itemï¿½s quantity you will decrease it from item Using
 the (-=) in Item class.
 - Else we will print him a message with the only left quantity.
 - The member function should return a boolean which is true if the item was
